@@ -1,19 +1,29 @@
 package com.example.smartagriculture.view.fragment;
 
-import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartagriculture.R;
+import com.example.smartagriculture.adapter.HisInfoAdapter;
+import com.example.smartagriculture.api.SpareData;
 import com.example.smartagriculture.base.FragmentBase;
 import com.example.smartagriculture.contract.HisInfoContract;
+import com.example.smartagriculture.entity.HisDataItemEntity;
+import com.example.smartagriculture.interfaces.AdapterListener;
 import com.example.smartagriculture.presenter.HisInfoPresenter;
 
-public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements HisInfoContract.View {
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements HisInfoContract.View, View.OnClickListener, AdapterListener<View> {
+
+    private RecyclerView rList;
+    private List<HisDataItemEntity> hisDataItems = null;
+    HisInfoAdapter adapter;
 
     @Override
     protected int getViewId() {
@@ -27,16 +37,50 @@ public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements H
 
     @Override
     protected void bindLayout() {
-
+        rList = view.findViewById(R.id.his_list);
     }
 
     @Override
     public void initData() {
-
+        mPresenter.getHisData(SpareData.getIntData(SpareData.INFO_POND_ID));
     }
 
     @Override
     protected void display() {
+        rList.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new HisInfoAdapter(getContext(), hisDataItems, this);
+        rList.setAdapter(adapter);
+    }
+
+    @Override
+    public void getDataSuccess(HisDataItemEntity hisDataItem) {
+        if (hisDataItem == null){
+            return;
+        }
+        Log.e("TAG", "His-getDataSuccess: " + hisDataItem.toString());
+        if (hisDataItems == null){
+            hisDataItems = new ArrayList<>();
+            display();
+        }
+        adapter.addData(hisDataItem);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (view.getId()) {
+
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onClickListener(View data, int position) {
+    }
+
+    @Override
+    public void onLongClickListener(View data, int position) {
 
     }
+
 }

@@ -1,6 +1,7 @@
 package com.example.smartagriculture.presenter;
 
 import com.example.smartagriculture.interfaces.TokenCallback;
+import com.example.smartagriculture.model.IModel;
 import com.example.smartagriculture.view.IView;
 
 public interface IPresenter<T extends IView> {

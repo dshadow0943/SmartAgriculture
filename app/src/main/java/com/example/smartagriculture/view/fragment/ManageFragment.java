@@ -1,16 +1,11 @@
 package com.example.smartagriculture.view.fragment;
 
 import android.content.Intent;
-import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.example.smartagriculture.R;
 import com.example.smartagriculture.adapter.PondAdapter;
@@ -47,6 +42,7 @@ public class ManageFragment extends FragmentBase<ManagePresenter> implements Man
 
     @Override
     public void initData() {
+        Log.e("TAG", "initData: -----");
         mPresenter.getPondPrunes();
     }
 
@@ -74,17 +70,19 @@ public class ManageFragment extends FragmentBase<ManagePresenter> implements Man
                 Intent intentNew = new Intent(getContext(), InfoActivity.class);
                 intentNew.putExtra(SpareData.INFO_TYPE, 0);
                 intentNew.putExtra(SpareData.POND_ID, ponds.get(position).getId());
+                SpareData.putIntData(SpareData.INFO_POND_ID, ponds.get(position).getId());
                 startActivity(intentNew);
                 break;
             case R.id.pond_his:
                 Intent intentHis = new Intent(getContext(), InfoActivity.class);
                 intentHis.putExtra(SpareData.INFO_TYPE, 1);
                 intentHis.putExtra(SpareData.POND_ID, ponds.get(position).getId());
+                SpareData.putIntData(SpareData.INFO_POND_ID, ponds.get(position).getId());
                 startActivity(intentHis);
                 break;
             case R.id.pond_control:
                 break;
-            case R.id.pond_menu:
+            case R.id.pond_con_menu:
                 break;
             default:
                 break;

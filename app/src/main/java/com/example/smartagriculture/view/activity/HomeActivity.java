@@ -9,10 +9,14 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartagriculture.R;
+import com.example.smartagriculture.api.SpareData;
 import com.example.smartagriculture.base.ActivityBase;
 import com.example.smartagriculture.contract.HomeContract;
 import com.example.smartagriculture.presenter.HomePresenter;
+import com.example.smartagriculture.view.fragment.AskExpertFragment;
+import com.example.smartagriculture.view.fragment.FarmingLogFragment;
 import com.example.smartagriculture.view.fragment.ManageFragment;
+import com.example.smartagriculture.view.fragment.UserFragment;
 import com.next.easynavigation.constant.Anim;
 import com.next.easynavigation.view.EasyNavigationBar;
 
@@ -25,9 +29,9 @@ public class HomeActivity extends ActivityBase<HomePresenter> implements HomeCon
 
     private String[] tabText = new String[]{"数据管理", "养殖日志", "专家问答", "个人中心"};
     //未选中icon
-    private int[] normalIcon = {R.mipmap.show_psw, R.mipmap.show_psw, R.mipmap.show_psw, R.mipmap.show_psw};
+    private int[] normalIcon = {R.drawable.ic_home_data_un, R.drawable.ic_home_farming_un, R.drawable.ic_home_expert_un, R.drawable.ic_home_user_un};
     //选中时icon
-    private int[] selectIcon = {R.mipmap.show_psw, R.mipmap.show_psw, R.mipmap.show_psw, R.mipmap.show_psw};
+    private int[] selectIcon = {R.drawable.ic_home_data, R.drawable.ic_home_farming, R.drawable.ic_home_expert, R.drawable.ic_home_user};
 
     private List<Fragment> fragments = new ArrayList<Fragment>();
 
@@ -54,9 +58,9 @@ public class HomeActivity extends ActivityBase<HomePresenter> implements HomeCon
 
     public void configViews() {
         fragments.add(new ManageFragment());
-        fragments.add(new ManageFragment());
-        fragments.add(new ManageFragment());
-        fragments.add(new ManageFragment());
+        fragments.add(new FarmingLogFragment());
+        fragments.add(new AskExpertFragment());
+        fragments.add(new UserFragment());
         navigationBar.titleItems(tabText) //必传  Tab文字集合
                 .normalIconItems(normalIcon) //必传  Tab未选中图标集合
                 .selectIconItems(selectIcon) //必传  Tab选中图标集合
@@ -89,6 +93,7 @@ public class HomeActivity extends ActivityBase<HomePresenter> implements HomeCon
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
+                SpareData.destroy();
                 System.exit(0);
             }
 

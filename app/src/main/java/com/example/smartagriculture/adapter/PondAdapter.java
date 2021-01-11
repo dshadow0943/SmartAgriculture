@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartagriculture.R;
-import com.example.smartagriculture.entity.PondEntity;
 import com.example.smartagriculture.entity.PondPruneEntity;
 import com.example.smartagriculture.interfaces.AdapterListener;
 
@@ -55,6 +55,9 @@ public class PondAdapter extends RecyclerView.Adapter<PondAdapter.HolderView> {
         private TextView tHis;
         private TextView tControl;
         private ImageView iMenu;
+        private TextView bFull;
+        private TextView bManage;
+        private LinearLayout lMenu;
 
         public HolderView(@NonNull View view) {
             super(view);
@@ -62,13 +65,19 @@ public class PondAdapter extends RecyclerView.Adapter<PondAdapter.HolderView> {
             tNew = view.findViewById(R.id.pond_new);
             tHis = view.findViewById(R.id.pond_his);
             tControl = view.findViewById(R.id.pond_control);
-            iMenu = view.findViewById(R.id.pond_menu);
+            iMenu = view.findViewById(R.id.pond_con_menu);
+            bFull = view.findViewById(R.id.pond_full);
+            bManage = view.findViewById(R.id.pond_manage_device);
+            lMenu = view.findViewById(R.id.pond_menu);
+
 
             tName.setOnClickListener(this);
             tNew.setOnClickListener(this);
             tHis.setOnClickListener(this);
             tControl.setOnClickListener(this);
             iMenu.setOnClickListener(this);
+            bFull.setOnClickListener(this);
+            bManage.setOnClickListener(this);
         }
 
         public void setListener(AdapterListener<View> listener) {
@@ -81,8 +90,19 @@ public class PondAdapter extends RecyclerView.Adapter<PondAdapter.HolderView> {
 
         @Override
         public void onClick(View v) {
-            listener.onClickListener(v, getAdapterPosition());
+
+            if (v.getId() == R.id.pond_con_menu){
+                if (lMenu.isShown()){
+                    lMenu.setVisibility(View.GONE);
+                } else {
+                    lMenu.setVisibility(View.VISIBLE);
+                }
+            } else {
+                lMenu.setVisibility(View.GONE);
+                listener.onClickListener(v, getAdapterPosition());
+            }
         }
+
     }
 
 }

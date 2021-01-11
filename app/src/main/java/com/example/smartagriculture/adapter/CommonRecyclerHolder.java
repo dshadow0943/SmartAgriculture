@@ -25,8 +25,8 @@ public class CommonRecyclerHolder extends RecyclerView.ViewHolder implements Vie
     public CommonRecyclerHolder(View itemView) {
         super(itemView);
         viewSparseArray = new SparseArray<>();
-        setOnClick(itemView);
-        setOnLongClick(itemView);
+//        setOnClick(itemView);
+//        setOnLongClick(itemView);
     }
 
     public void setClickCommonListener(AdapterListener<View> clickCommonListener) {

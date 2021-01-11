@@ -39,20 +39,20 @@
                 android:background="@color/textColorHint" />
 
             <EditText
-                android:id="@+id/login_user_name"
+                android:id="@+id/login_user_phone"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:paddingStart="2dp"
                 android:background="@null"
-                android:hint="请输入用户名或手机号"
-                android:inputType="number"
+                android:hint="请输入手机号"
+                android:inputType="phone"
                 android:textColor="@color/textColor"
                 android:textColorHint="@color/textColorHint"
                 android:textSize="16sp"/>
 
             <ImageView
-                android:id="@+id/login_user_name_empty"
+                android:id="@+id/login_user_phone_empty"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:padding="6dp"

@@ -11,5 +11,7 @@
     <dimen name="pond_value">18dp</dimen>
     <dimen name="pond_row">50dp</dimen>
     <dimen name="view_bar">50dp</dimen>
+    <dimen name="view_bar_text">22dp</dimen>
+    <dimen name="user_tile">16dp</dimen>
 
 </resources>

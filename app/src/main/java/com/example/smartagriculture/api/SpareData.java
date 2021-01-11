@@ -1,7 +1,6 @@
 package com.example.smartagriculture.api;
 
-import android.util.ArrayMap;
-
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -16,6 +15,7 @@ public class SpareData {
     public static final String TOKEN = "token";
     public static final String POND_ID = "pond_id";
     public static final String INFO_TYPE = "type";
+    public static final String INFO_POND_ID = "info_pond_id";
 
     private static Map<String, String> stringMap;
     private static Map<String, Integer> integerMap;
@@ -71,10 +71,10 @@ public class SpareData {
     }
 
     public static void init(){
-        stringMap = new ArrayMap<>();
-        integerMap = new ArrayMap<>();
-        objectMap = new ArrayMap<>();
-        longMap = new ArrayMap<>();
+        stringMap = new HashMap<>();
+        integerMap = new HashMap<>();
+        objectMap = new HashMap<>();
+        longMap = new HashMap<>();
     }
 
     public static void emptyMap(){

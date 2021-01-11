@@ -1,6 +1,7 @@
 package com.example.smartagriculture.base;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import androidx.fragment.app.Fragment;
 import com.example.smartagriculture.presenter.IPresenter;
 import com.example.smartagriculture.interfaces.TokenCallback;
 import com.example.smartagriculture.view.IView;
+import com.example.smartagriculture.view.activity.LoginActivity;
+import com.example.smartagriculture.view.dialog.LoginDialog;
 
 public abstract class FragmentBase<T extends IPresenter> extends Fragment implements IView {
 
@@ -74,31 +77,19 @@ public abstract class FragmentBase<T extends IPresenter> extends Fragment implem
         }
     }
 
-//    protected void updateToken() {
-//        if (!mPresenter.isUserData()) {
-////            LoginDialog.login(getContext(), LoginActivity.class);
-//            return;
-//        }
-//
-//        mPresenter.getToken(new TokenCallback() {
-//            @Override
-//            public void getTokenSuccess(String token) {
-////                SpareData.putStringData(SpareData.TOKEN, token);
-//                updateData();
-//            }
-//
-//            @Override
-//            public void getTokenFailed(int code, String msg) {
-//                if (code == 0){
-//                    Toast.makeText(getContext(), "网络连接错误", Toast.LENGTH_SHORT).show();
-//                } else {
-////                    LoginDialog.login(getContext(), LoginActivity.class);
-//                }
-//            }
-//        });
-//    }
+    @Override
+    public void onUpdateToken(int status) {
+        Log.e("TAG", "onUpdateToken: " + status);
+        switch (status){
+            case 0: initData();
+                break;
+            case 1: jump();
+                break;
+        }
+    }
 
-    protected void updateData(){
+    private void jump(){
+        LoginDialog.login(getContext(), LoginActivity.class);
     }
 
     @Override

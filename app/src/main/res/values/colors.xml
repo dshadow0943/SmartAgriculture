@@ -9,9 +9,11 @@
     <color name="white">#FFFFFFFF</color>
     <color name="textColorHint">#A0A0A0</color>
     <color name="textColor">#202020</color>
-    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimary">#0FA1F5</color>
     <color name="pond_key">#202020</color>
     <color name="pond_name">#202020</color>
     <color name="pond_value">#808080</color>
     <color name="pond_divider">#696969</color>
+    <color name="view_bar_text">#FF000000</color>
+    <color name="user_tile">#FF202020</color>
 </resources>

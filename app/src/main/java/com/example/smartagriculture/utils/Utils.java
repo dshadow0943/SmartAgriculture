@@ -2,6 +2,7 @@ package com.example.smartagriculture.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 

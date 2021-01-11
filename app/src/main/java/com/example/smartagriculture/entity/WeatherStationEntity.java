@@ -18,6 +18,9 @@ public class WeatherStationEntity {
         this.cTime = cTime;
     }
 
+    public WeatherStationEntity() {
+    }
+
     public String getsName() {
         return sName;
     }

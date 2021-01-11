@@ -5,6 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bag_pond"
     tools:context=".view.activity.InfoActivity">
 
     <RelativeLayout
@@ -30,14 +31,14 @@
 
             app:tl_bar_stroke_color="@color/colorPrimary"
             app:tl_bar_stroke_width="2dp"
-            app:tl_bar_color="@color/white"
+            app:tl_bar_color="@color/colorPrimary"
 
             app:tl_divider_width="2dp"
 
-            app:tl_indicator_color="@color/colorPrimary"
+            app:tl_indicator_color="@color/white"
 
-            app:tl_textSelectColor="@color/white"
-            app:tl_textUnselectColor="@color/colorPrimary"
+            app:tl_textSelectColor="@color/colorPrimary"
+            app:tl_textUnselectColor="@color/white"
             app:tl_textsize="16dp"/>
 
         <ImageView
@@ -49,12 +50,11 @@
 
     </RelativeLayout>
 
-
     <TextView
         android:id="@+id/split_line"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary" />
+        android:background="@color/cardview_dark_background" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/info_vp"

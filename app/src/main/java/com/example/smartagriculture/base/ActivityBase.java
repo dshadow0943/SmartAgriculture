@@ -2,16 +2,18 @@ package com.example.smartagriculture.base;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartagriculture.presenter.IPresenter;
-import com.example.smartagriculture.interfaces.TokenCallback;
+import com.example.smartagriculture.utils.Utils;
 import com.example.smartagriculture.view.IView;
+import com.example.smartagriculture.view.activity.LoginActivity;
+import com.example.smartagriculture.view.dialog.LoginDialog;
 
 public abstract class ActivityBase<T extends IPresenter> extends AppCompatActivity implements IView {
 
@@ -22,6 +24,7 @@ public abstract class ActivityBase<T extends IPresenter> extends AppCompatActivi
         super.onCreate(savedInstanceState);
         setContentView(getViewId());
         statusBarSetting();
+        Utils.init(this);
         bindLayout();
         initPresenter();
         initData();
@@ -65,33 +68,20 @@ public abstract class ActivityBase<T extends IPresenter> extends AppCompatActivi
             view.setOnClickListener(obj);
         }
     }
-//
-//    public void updateToken() {
-//        if (!mPresenter.isUserData()) {
-//            LoginDialog.login(this, LoginActivity.class);
-//            return;
-//        }
-//
-//        mPresenter.getToken(new TokenCallback() {
-//            @Override
-//            public void getTokenSuccess(String token) {
-//                SpareData.putStringData(SpareData.TOKEN, token);
-//                updateData();
-//            }
-//
-//            @Override
-//            public void getTokenFailed(int code, String msg) {
-//                if (code == 0){
-//                    Toast.makeText(getContext(), "网络连接错误", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    LoginDialog.login(getContext(), LoginActivity.class);
-//                }
-//            }
-//        });
-//    }
 
-    protected void updateData(){
+    @Override
+    public void onUpdateToken(int status) {
+        Log.e("TAG", "onUpdateToken: " + status);
+        switch (status){
+            case 0: initData();
+            break;
+            case 1: jump();
+                break;
+        }
+    }
 
+    private void jump(){
+        LoginDialog.login(this, LoginActivity.class);
     }
 
     @Override

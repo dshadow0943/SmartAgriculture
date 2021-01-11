@@ -26,6 +26,9 @@ public class WaterQualityEntity {
         this.cTime = cTime;
     }
 
+    public WaterQualityEntity() {
+    }
+
     public String getsName() {
         return sName;
     }
