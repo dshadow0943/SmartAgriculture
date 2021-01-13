@@ -36,7 +36,7 @@ public class EntityToMap {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
         for (HisDataEntity hisData: hisDatas){
             if (new Date().getTime() - hisData.getcTime().getTime() > startTime*60*60*1000){
-                continue;
+                break;
             }
             list.add(0, new MapEntity<>(hisData.getValue(), simpleDateFormat.format(hisData.getcTime())));
         }

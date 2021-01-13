@@ -9,7 +9,6 @@ import android.widget.Toast;
 import androidx.fragment.app.Fragment;
 
 import com.example.smartagriculture.R;
-import com.example.smartagriculture.api.SpareData;
 import com.example.smartagriculture.base.ActivityBase;
 import com.example.smartagriculture.contract.HomeContract;
 import com.example.smartagriculture.presenter.HomePresenter;
@@ -93,7 +92,7 @@ public class HomeActivity extends ActivityBase<HomePresenter> implements HomeCon
                 exitTime = System.currentTimeMillis();
             } else {
                 finish();
-                SpareData.destroy();
+//                SpareData.destroy();
                 System.exit(0);
             }
 

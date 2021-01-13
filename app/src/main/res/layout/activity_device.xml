@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.fragment.ManageFragment">
+    tools:context=".view.activity.DeviceActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -18,15 +19,16 @@
             android:layout_centerInParent="true"
             android:textSize="@dimen/view_bar_text"
             android:textColor="@color/view_bar_text"
-            android:text="数据管理"/>
+            android:text="设备管理"/>
 
-        <ImageView
+        <TextView
             android:id="@+id/pond_add"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:gravity="center"
             android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
-            android:src="@drawable/ic_add"/>
+            android:text="管理"/>
 
     </RelativeLayout>
 
@@ -37,8 +39,11 @@
         android:background="@color/textColor" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/manage_ponds"
+        android:layout_marginTop="10dp"
+        android:id="@+id/device_list"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
 </LinearLayout>

@@ -1,6 +1,5 @@
 package com.example.smartagriculture.view.fragment;
 
-import android.util.Log;
 import android.view.View;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -58,7 +57,6 @@ public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements H
         if (hisDataItem == null){
             return;
         }
-        Log.e("TAG", "His-getDataSuccess: " + hisDataItem.toString());
         if (hisDataItems == null){
             hisDataItems = new ArrayList<>();
             display();

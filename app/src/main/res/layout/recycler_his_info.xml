@@ -47,11 +47,11 @@
                 android:text="6小时"/>
 
             <RadioButton
-                android:id="@+id/info_time_1"
+                android:id="@+id/info_time_3"
                 android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_weight="1"
-                android:text="1小时"/>
+                android:text="3小时"/>
 
 
         </RadioGroup>

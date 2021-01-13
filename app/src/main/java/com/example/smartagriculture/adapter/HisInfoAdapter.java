@@ -48,7 +48,7 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
 
     @Override
     public void onBindViewHolder(@NonNull HolderView holder, int position) {
-        holder.setData(dataList.get(position), 12);
+        holder.setData(dataList.get(position), 3);
         holder.drawTheChartByMPAndroid();
 
     }
@@ -61,45 +61,41 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
     public void addData(HisDataItemEntity item, int position){
         dataList.add(position, item);
         notifyItemInserted(position);
-        Log.e("TAG", "his-adapter-addData: " + getItemCount());
     }
 
     public void addData(HisDataItemEntity item){
         dataList.add(item);
         notifyItemInserted(dataList.size());
-        Log.e("TAG", "his-adapter-addData: " + getItemCount());
     }
 
     public void removeData(int position){
         dataList.remove(position);
         notifyItemRemoved(position);
-
-
     }
 
     public class HolderView extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         private LineChart mChart;
         private HisDataItemEntity dataList;
-        List<MapEntity<Float, String>> list;
-        private int intervalSize = 24;
+        List<MapEntity<Float, String>> mapList;
+        private int intervalSize = 1;
 
         public HolderView(@NonNull View view) {
             super(view);
             mChart = view.findViewById(R.id.info_mp_chart);
-            view.findViewById(R.id.info_time_1).setOnClickListener(this);
+            view.findViewById(R.id.info_time_3).setOnClickListener(this);
             view.findViewById(R.id.info_time_6).setOnClickListener(this);
             view.findViewById(R.id.info_time_12).setOnClickListener(this);
             view.findViewById(R.id.info_time_24).setOnClickListener(this);
 
-            ((RadioButton)view.findViewById(R.id.info_time_12)).setChecked(true);
+            ((RadioButton)view.findViewById(R.id.info_time_3)).setChecked(true);
 
         }
 
         public void setData(HisDataItemEntity dataList, int intervalSize){
             this.dataList = dataList;
             this.intervalSize = intervalSize;
-            list = EntityToMap.hisDataToMap(dataList.getHisData(), intervalSize);
+            mapList = EntityToMap.hisDataToMap(dataList.getHisData(), intervalSize);
         }
 
         public void drawTheChartByMPAndroid() {
@@ -132,7 +128,7 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
             mLegend.setFormSize(6f); //字体
             mLegend.setTextColor(Color.BLACK); //颜色
 
-            lineChart.setVisibleXRange(0, 20);   //x轴可显示的坐标范围
+            lineChart.setVisibleXRange(0, 100);   //x轴可显示的坐标范围
             XAxis xAxis = lineChart.getXAxis();  //x轴的标示
             xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); //x轴位置
             xAxis.setTextColor(Color.BLACK);    //字体的颜色
@@ -156,23 +152,25 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
         }
 
         private LineData getLineData() {
-            int span = list.size()/20;
+            int a = 20;
+            int span = mapList.size()/a;
+            Log.e("TAG", "getLineData: " + mapList.size() + " " + span);
             ArrayList<String> xValues = new ArrayList<String>();
-            for (int i = 0; i < list.size(); i += span) {
-                // x轴显示的数据，这里默认使用数字下标显示
-                xValues.add(list.get(i).getValue());
+            for (int i = 0; i < a; i += 1) {
+                // x轴显示的数据
+                xValues.add(mapList.get(i*span).getValue());
             }
+            xValues.add(mapList.get(mapList.size()-1).getValue());
 
             // y轴的数据
             ArrayList<Entry> yValues = new ArrayList<>();
-            for (int i = 0; i < list.size(); i += span) {
-                yValues.add(new Entry(list.get(i).getKey(), i));
+            for (int i = 0; i < a; i += 1) {
+                yValues.add(new Entry(mapList.get(i*span).getKey(), i));
             }
-            // create a dataset and give it a type
+            yValues.add(new Entry(mapList.get(mapList.size()-1).getKey(), yValues.size()));
+            Log.e("TAG", "getLineData: " + xValues.size());
             // y轴的数据集合
             LineDataSet lineDataSet = new LineDataSet(yValues, dataList.getTitle()+" ("+dataList.getUnit()+")");
-            // mLineDataSet.setFillAlpha(110);
-            // mLineDataSet.setFillColor(Color.RED);
 
             //用y轴的集合来设置参数
             lineDataSet.setLineWidth(1.75f); // 线宽
@@ -195,7 +193,7 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.info_time_1: setData(dataList, 1);
+                case R.id.info_time_3: setData(dataList, 3);
                     break;
                 case R.id.info_time_6: setData(dataList, 6);
                     break;

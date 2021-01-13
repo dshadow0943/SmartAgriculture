@@ -17,10 +17,10 @@ public class SpareData {
     public static final String INFO_TYPE = "type";
     public static final String INFO_POND_ID = "info_pond_id";
 
-    private static Map<String, String> stringMap;
-    private static Map<String, Integer> integerMap;
-    private static Map<String, Object> objectMap;
-    private static Map<String, Long> longMap;
+    private static Map<String, String> stringMap = new HashMap<>();
+    private static Map<String, Integer> integerMap = new HashMap<>();
+    private static Map<String, Object> objectMap = new HashMap<>();
+    private static Map<String, Long> longMap = new HashMap<>();
 
     public static void putStringData(String key, String value){
         stringMap.put(key, value);
@@ -39,6 +39,9 @@ public class SpareData {
     }
 
     public static String getStringData(String key){
+        if (key == null){
+            return "";
+        }
         return stringMap.get(key);
     }
 

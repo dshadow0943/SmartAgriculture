@@ -7,6 +7,7 @@ import com.example.smartagriculture.entity.PondEntity;
 import com.example.smartagriculture.entity.PondPruneEntity;
 import com.example.smartagriculture.entity.ResultEntity;
 import com.example.smartagriculture.entity.SensorDataEntity;
+import com.example.smartagriculture.entity.SensorPruneEntity;
 import com.example.smartagriculture.entity.UserEntity;
 import com.example.smartagriculture.utils.RetrofitUtil;
 
@@ -82,5 +83,13 @@ public class HttpDataSource {
 
     public Observable<ResultEntity<UserEntity>> getUserNews(){
         return apiService.getUserNews();
+    }
+
+    public Observable<ResultEntity<String>> controlDevice(){
+        return apiService.controlDevice();
+    }
+
+    public Observable<ResultEntity<List<SensorPruneEntity>>> getDeviceList(int pondId){
+        return apiService.getDeviceList(pondId);
     }
 }

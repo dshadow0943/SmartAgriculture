@@ -6,6 +6,7 @@ import com.example.smartagriculture.entity.PondEntity;
 import com.example.smartagriculture.entity.PondPruneEntity;
 import com.example.smartagriculture.entity.ResultEntity;
 import com.example.smartagriculture.entity.SensorDataEntity;
+import com.example.smartagriculture.entity.SensorPruneEntity;
 import com.example.smartagriculture.entity.UserEntity;
 
 import java.util.List;
@@ -38,5 +39,11 @@ public interface SmartAgricultureApiService {
 
     @GET("user/news")
     Observable<ResultEntity<UserEntity>> getUserNews();
+
+    @GET("mqtt/device")
+    Observable<ResultEntity<String>> controlDevice();
+
+    @GET("mqtt/seeks")
+    Observable<ResultEntity<List<SensorPruneEntity>>> getDeviceList(@Query("pond_id") int pondId);
 
 }
