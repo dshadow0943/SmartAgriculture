@@ -28,7 +28,7 @@
             android:layout_width="200dp"
             android:layout_height="30dp"
             android:layout_centerInParent="true"
-
+            app:tl_indicator_bounce_enable="true"
             app:tl_bar_stroke_color="@color/colorPrimary"
             app:tl_bar_stroke_width="2dp"
             app:tl_bar_color="@color/colorPrimary"

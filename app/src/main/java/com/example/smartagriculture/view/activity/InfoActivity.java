@@ -78,6 +78,9 @@ public class InfoActivity extends ActivityBase<InfoPresenter> implements InfoCon
             }
         });
 
+
+//        mVp.setScrollable(false);
+
         //滑动、点击切换页面
         mVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override

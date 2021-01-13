@@ -3,6 +3,7 @@ package com.example.smartagriculture.entity;
 public class UserEntity {
 
     private int id;
+    private String avatar;
     private String phone;
     private String name;
     private String rName;
@@ -17,6 +18,14 @@ public class UserEntity {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
     public String getPhone() {

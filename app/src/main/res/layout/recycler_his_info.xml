@@ -9,9 +9,53 @@
     <LinearLayout
         android:id="@+id/info_chart"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="10dp"
         android:background="@drawable/his_info_card_grey">
+
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/info_mp_chart"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp">
+
+            <RadioButton
+                android:id="@+id/info_time_24"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="24小时"/>
+
+            <RadioButton
+                android:id="@+id/info_time_12"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="12小时"/>
+
+            <RadioButton
+                android:id="@+id/info_time_6"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="6小时"/>
+
+            <RadioButton
+                android:id="@+id/info_time_1"
+                android:layout_width="0dp"
+                android:layout_height="20dp"
+                android:layout_weight="1"
+                android:text="1小时"/>
+
+
+        </RadioGroup>
+
     </LinearLayout>
 
     <View

@@ -42,6 +42,7 @@ public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements H
 
     @Override
     public void initData() {
+        hisDataItems = null;
         mPresenter.getHisData(SpareData.getIntData(SpareData.INFO_POND_ID));
     }
 
@@ -61,6 +62,13 @@ public class HisInfoFragment extends FragmentBase<HisInfoPresenter> implements H
         if (hisDataItems == null){
             hisDataItems = new ArrayList<>();
             display();
+        }
+        for (int i = 0; i < hisDataItems.size(); i++) {
+            if (hisDataItem.getTitle().equals(hisDataItems.get(i).getTitle())){
+                adapter.removeData(i);
+                adapter.addData(hisDataItem, i);
+                return;
+            }
         }
         adapter.addData(hisDataItem);
     }

@@ -16,6 +16,7 @@ import com.example.smartagriculture.entity.PondPruneEntity;
 import com.example.smartagriculture.interfaces.AdapterListener;
 import com.example.smartagriculture.presenter.ManagePresenter;
 import com.example.smartagriculture.view.activity.InfoActivity;
+import com.example.smartagriculture.view.activity.PondNewsActivity;
 import com.google.gson.Gson;
 
 import java.util.List;
@@ -82,7 +83,11 @@ public class ManageFragment extends FragmentBase<ManagePresenter> implements Man
                 break;
             case R.id.pond_control:
                 break;
-            case R.id.pond_con_menu:
+            case R.id.pond_full:
+                Intent intentFull = new Intent(getContext(), PondNewsActivity.class);
+                intentFull.putExtra(SpareData.POND_ID, ponds.get(position).getId());
+                SpareData.putIntData(SpareData.INFO_POND_ID, ponds.get(position).getId());
+                startActivity(intentFull);
                 break;
             default:
                 break;

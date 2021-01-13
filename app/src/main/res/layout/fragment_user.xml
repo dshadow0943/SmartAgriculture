@@ -44,12 +44,14 @@
         android:background="@color/cardview_dark_background" />
 
     <ImageView
+        android:id="@+id/user_avatar"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"/>
 
     <TextView
+        android:id="@+id/user_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
@@ -70,6 +72,7 @@
         android:padding="10dp">
 
         <LinearLayout
+            android:id="@+id/user_alter_data"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
@@ -102,6 +105,7 @@
             android:background="@drawable/his_info_divider_grey"/>
 
         <LinearLayout
+            android:id="@+id/user_alter_pwd"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"
@@ -198,6 +202,7 @@
             android:background="@drawable/his_info_divider_grey"/>
 
         <LinearLayout
+            android:id="@+id/user_out"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:gravity="center_vertical"

@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class WaterQualityEntity {
 
+    private int sId;
     private String sName;       //所属传感器名称
     private Date cTime;         //数据上传时间
     private float batVolt;      //电池电压
@@ -21,12 +22,12 @@ public class WaterQualityEntity {
     private float phPvdq;       //PH电压数字量(盛世融合)
     private int status;         //继电器状态
 
-    public WaterQualityEntity(String sName, Date cTime) {
-        this.sName = sName;
-        this.cTime = cTime;
+    public int getsId() {
+        return sId;
     }
 
-    public WaterQualityEntity() {
+    public void setsId(int sId) {
+        this.sId = sId;
     }
 
     public String getsName() {

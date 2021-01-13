@@ -6,6 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".view.activity.LoginActivity">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_bar"
+        android:layout_marginStart="@dimen/activity_horizontal_margin"
+        android:layout_marginEnd="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/pond_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="@dimen/view_bar_text"
+            android:textColor="@color/view_bar_text"
+            android:text="用户登录"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/split_line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/view_bar"
+        android:background="@color/cardview_dark_background" />
+
     <LinearLayout
         android:id="@+id/login_center"
         android:orientation="vertical"
@@ -113,7 +137,7 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="50dp"
-            android:background="@mipmap/btn_login"
+            android:background="@drawable/new_info_card_grey"
             android:orientation="vertical"
             android:layout_gravity="center_horizontal"
             android:padding="6dp">

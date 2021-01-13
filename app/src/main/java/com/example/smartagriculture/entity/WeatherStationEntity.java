@@ -1,9 +1,11 @@
 package com.example.smartagriculture.entity;
 
+
 import java.util.Date;
 
 public class WeatherStationEntity {
 
+    private int sId;
     private String sName;       //所属传感器名称
     private Date cTime;         //数据上报时间
     private float temp;         //温度
@@ -13,12 +15,12 @@ public class WeatherStationEntity {
     private float windDrct;     //风速
     private float rainHr;       //24小时降雨量
 
-    public WeatherStationEntity(String sName, Date cTime) {
-        this.sName = sName;
-        this.cTime = cTime;
+    public int getsId() {
+        return sId;
     }
 
-    public WeatherStationEntity() {
+    public void setsId(int sId) {
+        this.sId = sId;
     }
 
     public String getsName() {

@@ -16,22 +16,8 @@ public class PondEntity {
     private int cId;            //创建者id
     private String cName;       //创建者昵称
     private Date cTime;         //创建时间
-    private List<Integer> sensorIds;
+    private List<PondPruneEntity> sensors;
 
-    public PondEntity(int id, String name, float length, float width, float longitude, float latitude, String pType, String pName, int cId, String cName, Date cTime, List<Integer> sensorIds) {
-        this.id = id;
-        this.name = name;
-        this.length = length;
-        this.width = width;
-        this.longitude = longitude;
-        this.latitude = latitude;
-        this.pType = pType;
-        this.pName = pName;
-        this.cId = cId;
-        this.cName = cName;
-        this.cTime = cTime;
-        this.sensorIds = sensorIds;
-    }
 
     public int getId() {
         return id;
@@ -119,5 +105,13 @@ public class PondEntity {
 
     public void setcTime(Date cTime) {
         this.cTime = cTime;
+    }
+
+    public List<PondPruneEntity> getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(List<PondPruneEntity> sensors) {
+        this.sensors = sensors;
     }
 }

@@ -24,7 +24,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_pond_his"/>
+                android:src="@drawable/ic_pond_title"/>
 
             <TextView
                 android:id="@+id/pond_name"
@@ -33,7 +33,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/pond_name"
-                android:textSize="@dimen/pond_name"
+                android:textSize="@dimen/pond_card_name"
                 android:text="塘口名称"/>
 
             <ImageView
@@ -59,7 +59,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/ic_pond_his"/>
+                android:src="@drawable/ic_pond_new"/>
 
             <TextView
                 android:id="@+id/pond_new"
@@ -68,7 +68,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/pond_name"
-                android:textSize="@dimen/pond_name"
+                android:textSize="@dimen/pond_card_name"
                 android:text="实时监控"/>
 
             <ImageView
@@ -101,7 +101,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/pond_name"
-                android:textSize="@dimen/pond_name"
+                android:textSize="@dimen/pond_card_name"
                 android:text="数据分析"/>
 
             <ImageView
@@ -134,7 +134,7 @@
                 android:layout_weight="1"
                 android:layout_marginStart="5dp"
                 android:textColor="@color/pond_name"
-                android:textSize="@dimen/pond_name"
+                android:textSize="@dimen/pond_card_name"
                 android:text="设备控制"/>
 
             <ImageView
@@ -169,17 +169,23 @@
             android:layout_height="wrap_content"
             android:background="?selectableItemBackground"
             android:textColor="@color/pond_name"
-            android:textSize="@dimen/pond_value"
+            android:textSize="@dimen/pond_card_value"
             android:text="详细信息"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/his_info_divider_grey"/>
 
         <TextView
             android:id="@+id/pond_manage_device"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
             android:background="?selectableItemBackground"
             android:textColor="@color/pond_name"
-            android:textSize="@dimen/pond_value"
+            android:textSize="@dimen/pond_card_value"
             android:text="管理设备"/>
 
     </LinearLayout>

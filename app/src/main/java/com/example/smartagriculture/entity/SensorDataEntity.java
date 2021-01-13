@@ -2,13 +2,8 @@ package com.example.smartagriculture.entity;
 
 public class SensorDataEntity {
 
-    private WaterQualityEntity waterQuality;
-    private WeatherStationEntity weatherStation;
-
-    public SensorDataEntity(WaterQualityEntity waterQuality, WeatherStationEntity weatherStation) {
-        this.waterQuality = waterQuality;
-        this.weatherStation = weatherStation;
-    }
+    private WaterQualityEntity waterQuality;            //水质终端
+    private WeatherStationEntity weatherStation;        //气象站
 
     public WaterQualityEntity getWaterQuality() {
         return waterQuality;

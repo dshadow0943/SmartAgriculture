@@ -2,9 +2,11 @@ package com.example.smartagriculture.api.source.http.service;
 
 
 import com.example.smartagriculture.entity.HisDataEntity;
+import com.example.smartagriculture.entity.PondEntity;
 import com.example.smartagriculture.entity.PondPruneEntity;
 import com.example.smartagriculture.entity.ResultEntity;
 import com.example.smartagriculture.entity.SensorDataEntity;
+import com.example.smartagriculture.entity.UserEntity;
 
 import java.util.List;
 
@@ -30,5 +32,11 @@ public interface SmartAgricultureApiService {
 
     @GET("sensor/historical/{type}")
     Observable<ResultEntity<List<HisDataEntity>>> getHisData(@Path("type") String type, @Query("pond_id") int pondId, @Query("table") int table);
+
+    @GET("pond/info")
+    Observable<ResultEntity<PondEntity>> getPondNews(@Query("id") int pondId);
+
+    @GET("user/news")
+    Observable<ResultEntity<UserEntity>> getUserNews();
 
 }
