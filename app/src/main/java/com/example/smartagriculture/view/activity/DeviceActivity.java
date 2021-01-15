@@ -1,6 +1,7 @@
 package com.example.smartagriculture.view.activity;
 
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -56,8 +57,16 @@ public class DeviceActivity extends ActivityBase<DevicePresenter> implements Dev
     }
 
     @Override
-    public void controlDeviceSuccess() {
-
+    public void controlDeviceSuccess(int m) {
+        Toast.makeText(this, "设备控制返回值为: " + m, Toast.LENGTH_SHORT).show();
+        switch (m){
+            case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+        }
     }
 
     @Override

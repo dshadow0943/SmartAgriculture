@@ -40,6 +40,7 @@ public class LoginModel extends ModelBase {
 
                     @Override
                     public void onError(@NonNull Throwable e) {
+                        e.printStackTrace();
                         back.onFail("连接出错");
                     }
 

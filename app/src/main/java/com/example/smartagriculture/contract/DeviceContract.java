@@ -10,7 +10,7 @@ public interface DeviceContract {
     interface View extends IView{
         void getDeviceSuccess(List<SensorPruneEntity> devices);
 
-        void controlDeviceSuccess();
+        void controlDeviceSuccess(int m);
     }
 
     interface Presenter{

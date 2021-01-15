@@ -34,11 +34,11 @@ public class DevicePresenter extends PresenterBase<DeviceContract.View, DeviceMo
 
     @Override
     public void controlDevice(int deviceId) {
-        model.controlDevice(new CallBack<ResultEntity<String>, String>() {
+        model.controlDevice(new CallBack<ResultEntity<Integer>, String>() {
             @Override
-            public void onSuccess(ResultEntity<String> data) {
+            public void onSuccess(ResultEntity<Integer> data) {
                 if (data.getCode() == 200){
-                    mView.controlDeviceSuccess();
+                    mView.controlDeviceSuccess(data.getData());
                 }
             }
 

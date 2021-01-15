@@ -47,18 +47,18 @@ public class DeviceModel extends ModelBase {
                 });
     }
 
-    public void controlDevice(CallBack<ResultEntity<String>, String> back) {
+    public void controlDevice(CallBack<ResultEntity<Integer>, String> back) {
         HttpDataSource.getInstance().controlDevice()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<ResultEntity<String>>() {
+                .subscribe(new Observer<ResultEntity<Integer>>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
 
                     }
 
                     @Override
-                    public void onNext(@NonNull ResultEntity<String> result) {
+                    public void onNext(@NonNull ResultEntity<Integer> result) {
                         if (result.getCode() == 200 || result.getCode() == 416){
                             back.onSuccess(result);
                         }

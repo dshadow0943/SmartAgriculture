@@ -13,6 +13,7 @@ import java.util.List;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
@@ -41,9 +42,12 @@ public interface SmartAgricultureApiService {
     Observable<ResultEntity<UserEntity>> getUserNews();
 
     @GET("mqtt/device")
-    Observable<ResultEntity<String>> controlDevice();
+    Observable<ResultEntity<Integer>> controlDevice();
 
     @GET("mqtt/seeks")
     Observable<ResultEntity<List<SensorPruneEntity>>> getDeviceList(@Query("pond_id") int pondId);
+
+    @POST("user/register")
+    Observable<ResultEntity<Integer>> register(@Query("name") String name, @Query("phone") String phone, @Query("pwd") String pwd);
 
 }

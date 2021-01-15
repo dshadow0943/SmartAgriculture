@@ -23,7 +23,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class HttpDataSource {
 
+//    public static final String API = "http://192.168.1.116:8080/agriculture/";
+
     public static final String API = "http://192.168.2.204:8080/agriculture/";
+
 
     private SmartAgricultureApiService apiService;
     private SmartAgricultureApiService apiLogin;
@@ -85,11 +88,15 @@ public class HttpDataSource {
         return apiService.getUserNews();
     }
 
-    public Observable<ResultEntity<String>> controlDevice(){
+    public Observable<ResultEntity<Integer>> controlDevice(){
         return apiService.controlDevice();
     }
 
     public Observable<ResultEntity<List<SensorPruneEntity>>> getDeviceList(int pondId){
         return apiService.getDeviceList(pondId);
+    }
+
+    public Observable<ResultEntity<Integer>> register(String name, String phone, String pwd){
+        return apiService.register(name, phone, pwd);
     }
 }

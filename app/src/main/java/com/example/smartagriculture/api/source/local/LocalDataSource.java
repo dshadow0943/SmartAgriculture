@@ -65,4 +65,18 @@ public class LocalDataSource {
     public String getToken() {
         return SPUtils.getInstance().getString(USER_TOKEN);
     }
+
+    public void removeLogin(){
+        SPUtils.getInstance().remove(USER_LOGIN);
+    }
+
+    public void removeToken() {
+        SPUtils.getInstance().remove(USER_TOKEN);
+    }
+
+    public void removeAll(){
+        SPUtils.getInstance().remove(USER_TOKEN);
+        SPUtils.getInstance().remove(USER_LOGIN);
+        SPUtils.getInstance().remove(USER_PWD);
+    }
 }

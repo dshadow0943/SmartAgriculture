@@ -1,12 +1,7 @@
 package com.example.smartagriculture.view.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -35,6 +30,7 @@ public class LoginActivity extends ActivityBase<LoginPresenter> implements Login
         eUserPhone = findViewById(R.id.login_user_phone);
         eUserPwd = findViewById(R.id.login_user_pwd);
         findViewById(R.id.login_log).setOnClickListener(this);
+        findViewById(R.id.login_user_register).setOnClickListener(this);
     }
 
     @Override
@@ -49,12 +45,12 @@ public class LoginActivity extends ActivityBase<LoginPresenter> implements Login
 
     private void login(){
         String phone = eUserPhone.getText().toString();
-        if (phone == null){
+        if (phone == null || phone.equals("")){
             Toast.makeText(this, "手机号不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
         String pwd = eUserPwd.getText().toString();
-        if (pwd == null){
+        if (pwd == null || pwd.equals("")){
             Toast.makeText(this, "密码不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -73,6 +69,9 @@ public class LoginActivity extends ActivityBase<LoginPresenter> implements Login
         switch (v.getId()){
             case R.id.login_log:
                 login();
+                break;
+            case R.id.login_user_register:
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
         }
     }

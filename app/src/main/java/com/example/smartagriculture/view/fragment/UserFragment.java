@@ -48,6 +48,7 @@ public class UserFragment extends FragmentBase<UserPresenter> implements UserCon
         lAlterPwd.setOnClickListener(this);
         lAlterData.setOnClickListener(this);
         lOut.setOnClickListener(this);
+        view.findViewById(R.id.user_empty).setOnClickListener(this);
 
     }
 
@@ -80,6 +81,11 @@ public class UserFragment extends FragmentBase<UserPresenter> implements UserCon
         switch (v.getId()){
             case R.id.user_out:
                 LoginDialog.loginOut(getContext(), LoginActivity.class);
+                break;
+            case R.id.user_empty:
+                LoginDialog.DataEmpty(this);
+//                initData();
+                break;
         }
     }
 }

@@ -48,7 +48,7 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
 
     @Override
     public void onBindViewHolder(@NonNull HolderView holder, int position) {
-        holder.setData(dataList.get(position), 3);
+        holder.setData(dataList.get(position));
         holder.drawTheChartByMPAndroid();
 
     }
@@ -77,11 +77,13 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
 
         private LineChart mChart;
         private HisDataItemEntity dataList;
-        List<MapEntity<Float, String>> mapList;
-        private int intervalSize = 1;
+        private List<MapEntity<Float, String>> mapList;
+        private int intervalSize = 3;
+        private View view;
 
         public HolderView(@NonNull View view) {
             super(view);
+            this.view = view;
             mChart = view.findViewById(R.id.info_mp_chart);
             view.findViewById(R.id.info_time_3).setOnClickListener(this);
             view.findViewById(R.id.info_time_6).setOnClickListener(this);
@@ -92,10 +94,17 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
 
         }
 
-        public void setData(HisDataItemEntity dataList, int intervalSize){
-            this.dataList = dataList;
+        public int getIntervalSize() {
+            return intervalSize;
+        }
+
+        public void setIntervalSize(int intervalSize) {
             this.intervalSize = intervalSize;
-            mapList = EntityToMap.hisDataToMap(dataList.getHisData(), intervalSize);
+        }
+
+        public void setData(HisDataItemEntity dataList){
+            this.dataList = dataList;
+            mapList = EntityToMap.hisDataToMap(dataList.getHisData(), this.intervalSize);
         }
 
         public void drawTheChartByMPAndroid() {
@@ -153,6 +162,7 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
 
         private LineData getLineData() {
             int a = 20;
+            a = Math.min(a, mapList.size());
             int span = mapList.size()/a;
             Log.e("TAG", "getLineData: " + mapList.size() + " " + span);
             ArrayList<String> xValues = new ArrayList<String>();
@@ -193,13 +203,21 @@ public class HisInfoAdapter extends RecyclerView.Adapter<HisInfoAdapter.HolderVi
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.info_time_3: setData(dataList, 3);
+                case R.id.info_time_3:
+                    setIntervalSize(3);
+                    setData(dataList);
                     break;
-                case R.id.info_time_6: setData(dataList, 6);
+                case R.id.info_time_6:
+                    setIntervalSize(6);
+                    setData(dataList);
                     break;
-                case R.id.info_time_12: setData(dataList, 12);
+                case R.id.info_time_12:
+                    setIntervalSize(12);
+                    setData(dataList);
                     break;
-                case R.id.info_time_24: setData(dataList, 24);
+                case R.id.info_time_24:
+                    setIntervalSize(24);
+                    setData(dataList);
                     break;
             }
             drawTheChartByMPAndroid();
